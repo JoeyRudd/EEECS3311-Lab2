@@ -36,7 +36,7 @@ public class Person {
 	 * @param s the can of soda this will gulp from
 	 */
 	public void gulpFrom(SodaCan soda) {
-		this.amountDrank += soda.sip();
+		this.amountDrank += soda.gulp();
 	}
 
 	/**
@@ -48,7 +48,7 @@ public class Person {
 	public String getThirstStatus() {
 		if (this.amountDrank >= 375) {
 			return "satisfied";
-		} else if (this.amountDrank > 175) {
+		} else if (this.amountDrank >= 175) {
 			return "thirsty";
 		} else {
 			return "very thirsty";
