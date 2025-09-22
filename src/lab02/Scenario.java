@@ -18,28 +18,64 @@ package lab02;
  */
 public class Scenario {
 	public static void main(String[] args) {
-		// TODO: Create soda objects for RootBeer, GingerAle, Cherry, and Grape
-		SodaCan rootBeer = new SodaCan("RootBeer");
-		SodaCan gingerAle = new SodaCan("GingerAle");
-		SodaCan cherry = new SodaCan("Cherry");
-		SodaCan grape = new SodaCan("Grape");
-		// TODO: Assign RootBeer and GingerAle to Jack
-		// TODO: Assign Cherry and Grape to Jill
+		// Create people
+        Person jack = new Person("Jack");
+        Person jill = new Person("Jill");
 
-		// TODO: Jack opens RootBeer and gives it to Jill
-		// TODO: Jill drinks the RootBeer completely
-		// TODO: Jack asks if Jill is still thirsty, Jill responds
+        // Create sodas
+        SodaCan rootBeer = new SodaCan("RootBeer");
+        SodaCan gingerAle = new SodaCan("GingerAle");
+        SodaCan cherry = new SodaCan("Cherry");
+        SodaCan grape = new SodaCan("Grape");
 
-		// TODO: Jill opens Cherry soda, drinks until satisfied, gives to Jack
-		// TODO: Jack takes a sip but doesn't like it
-		// TODO: Jill checks how much Cherry soda is left, decides not to drink more
+        // Jack opens RootBeer and gives it to Jill
+        rootBeer.open();
+        System.out.println("Jack opens RootBeer and gives it to Jill.");
 
-		// TODO: Jack asks Jill to try her Grape soda
-		// TODO: Jill gives it to Jack, Jack opens it
-		// TODO: Jack drinks about half, then tells Jill how he feels
+        // Jill drinks RootBeer completely
+        while (rootBeer.getAmount() > 0) {
+            jill.gulpFrom(rootBeer);
+        }
+		System.out.println("Jill finished the RootBeer.");
+        System.out.println(jill);
 
-		// TODO: Print/check the final amounts in all cans
-	}
+        // Jack asks if Jill is still thirsty
+        System.out.println("Jack: Are you still thirsty?");
+		System.out.println("Jill: I am " + jill.getThirstStatus());
+
+        // Jill opens Cherry soda and drinks until satisfied
+		System.out.println("Jill opens her Cherry soda and drinks until satisfied.");
+        cherry.open();
+		while (cherry.getAmount() > 0 && !jill.getThirstStatus().equals("satisfied")) {
+            jill.gulpFrom(cherry);
+        }
+
+        // Jill gives Cherry soda to Jack, he takes a sip but doesn’t like it
+        jack.sipFrom(cherry);
+        System.out.println("Jack takes a sip of Cherry but doesn’t like it.");
+        System.out.println(jack);
+
+        // Jill checks Cherry amount but decides not to drink more
+        System.out.println("Jill checks Cherry: " + cherry.getAmount() + " left, but she decides not to drink more.");
+
+        // Jack asks Jill for Grape soda
+        System.out.println("Jack: Can I try your Grape soda?");
+        grape.open();
+        // Jack drinks about half of it
+        int halfAmount = grape.getAmount() / 2;
+        while (grape.getAmount() > halfAmount) {
+            jack.gulpFrom(grape);
+        }
+        System.out.println("Jack drinks about half of the Grape.");
+        System.out.println(jack);
+
+        // Finally, check amounts in all cans
+		System.out.println("\nAmount left in cans");
+        System.out.println(rootBeer);
+        System.out.println(gingerAle);
+        System.out.println(cherry);
+        System.out.println(grape);
+    }
 	
 
 

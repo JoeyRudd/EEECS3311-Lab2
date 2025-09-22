@@ -45,7 +45,7 @@ public class Person {
 	 * 
 	 * @return the thirst status of this
 	 */
-	private String getThirstStatus() {
+	public String getThirstStatus() {
 		if (this.amountDrank >= 375) {
 			return "satisfied";
 		} else if (this.amountDrank > 175) {
