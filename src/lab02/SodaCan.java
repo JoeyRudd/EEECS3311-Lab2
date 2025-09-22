@@ -45,6 +45,10 @@ public class SodaCan {
 	 * @return the amount of soda actually removed
 	 */
 	public int sip() {
+		// if can isn't open return nothing
+		if (!(this.isOpen))
+			return 0;
+		
 		// if there is an amount of 10 or larger remove and return 10
 		if (this.amount >= 10) {
 			this.amount -= 10;
@@ -64,6 +68,10 @@ public class SodaCan {
 	 * @return the amount of soda actually removed
 	 */
 	public int gulp() {
+		// if can isn't open return nothing
+		if (!(this.isOpen))
+			return 0;
+
 		// if there is an amount of 10 or larger remove and return 10
 		if (this.amount >= 50) {
 			this.amount -= 50;

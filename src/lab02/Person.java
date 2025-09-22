@@ -27,7 +27,7 @@ public class Person {
 	 * @param s the can of soda this will gulp from
 	 */
 	public void sipFrom(SodaCan soda) {
-		SodaCan.sip(soda);
+		this.amountDrank += soda.sip();
 	}
 
 	/**
@@ -36,7 +36,7 @@ public class Person {
 	 * @param s the can of soda this will gulp from
 	 */
 	public void gulpFrom(SodaCan soda) {
-
+		this.amountDrank += soda.sip();
 	}
 
 	/**
@@ -46,8 +46,13 @@ public class Person {
 	 * @return the thirst status of this
 	 */
 	private String getThirstStatus() {
-		// TODO Auto-generated method stub
-		return null;
+		if (this.amountDrank >= 375) {
+			return "satisfied";
+		} else if (this.amountDrank > 175) {
+			return "thirsty";
+		} else {
+			return "very thirsty";
+		}
 	}
 
 	/**
